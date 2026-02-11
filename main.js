@@ -64,25 +64,6 @@ function updatePlot() {
     plotar(X,Y);
 }
 
-// function animarTemperatura() {
-//     const sliderT = document.getElementById("T");
-//     let t = 0;
-//     function animar() {
-//         t += 0.02;
-//         const Tmin = 273;
-//         const Tmax = 373;
-//         const T = Tmin + (Tmax - Tmin) * (0.5 + 0.5 * Math.sin(t));
-//         sliderT.value = T;
-//         updatePlot();
-//         const Tc = T - 273.15;
-//         document.getElementById("valorT").textContent =
-//             `${T.toFixed(1)} K (${Tc.toFixed(1)} °C)`;
-
-//         requestAnimationFrame(animar);
-//     }
-
-//     animar();
-// }
 
 function main() {
     const sliderT = document.getElementById("T");
@@ -94,7 +75,6 @@ function main() {
         valorT.textContent = `${T} K (${Tc} °C)`;
     });
     updatePlot();
-    // animarTemperatura();
 }
 
 window.addEventListener('DOMContentLoaded', main);
