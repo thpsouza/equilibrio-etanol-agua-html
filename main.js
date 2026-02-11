@@ -1,12 +1,14 @@
 function plotar(X, Y) {
     const ctx = document.getElementById('grafico').getContext('2d');
-    
-    if (window.diagramaEquilibrio) {
-        window.diagramaEquilibrio.destroy();
-    }
-
     const dadosEquilibrio = X.map((x, i) => ({ x: x, y: Y[i] }));
     const linhaAuxiliar = X.map((x) => ({ x: x, y: x }));
+
+    if (window.diagramaEquilibrio) {
+        window.diagramaEquilibrio.data.datasets[0].data = dadosEquilibrio;
+        window.diagramaEquilibrio.data.datasets[1].data = linhaAuxiliar;
+        window.diagramaEquilibrio.update();
+        return;
+    }
 
     window.diagramaEquilibrio = new Chart(ctx, {
         type: 'line',
@@ -32,6 +34,7 @@ function plotar(X, Y) {
             ]
         },
         options: {
+            animation: false,
             plugins: {
                 legend: {display: false}
             },
@@ -43,25 +46,11 @@ function plotar(X, Y) {
                     title: { display: true, text: 'x' },
                     min: 0,
                     max: 1,
-                    grid: {
-                        color: 'rgba(0,0,0,0.08)',
-                        lineWidth: 1
-                    },
-                    ticks: {
-                        stepSize: 0.1
-                    }
                 },
                 y: {
                     title: { display: true, text: 'y' },
                     min: 0,
                     max: 1,
-                    grid: {
-                        color: 'rgba(0,0,0,0.08)',
-                        lineWidth: 1
-                    },
-                    ticks: {
-                        stepSize: 0.1
-                    }
                 }
             }
         }
@@ -69,19 +58,31 @@ function plotar(X, Y) {
 }
 
 function updatePlot() {
-    // const SliderR = document.getElementById("R");
-    // SliderR.addEventListener("input", updatePlot);
-    // const R = parseFloat(SliderR.value);
-
-    // const SliderXD = document.getElementById("xD");
-    // SliderXD.addEventListener("input", updatePlot);
-    // const xD = parseFloat(SliderXD.value);
-
     const SliderT = document.getElementById("T");
     const T = parseFloat(SliderT.value);
     const [X,Y] = gerarDados(T);
     plotar(X,Y);
 }
+
+// function animarTemperatura() {
+//     const sliderT = document.getElementById("T");
+//     let t = 0;
+//     function animar() {
+//         t += 0.02;
+//         const Tmin = 273;
+//         const Tmax = 373;
+//         const T = Tmin + (Tmax - Tmin) * (0.5 + 0.5 * Math.sin(t));
+//         sliderT.value = T;
+//         updatePlot();
+//         const Tc = T - 273.15;
+//         document.getElementById("valorT").textContent =
+//             `${T.toFixed(1)} K (${Tc.toFixed(1)} °C)`;
+
+//         requestAnimationFrame(animar);
+//     }
+
+//     animar();
+// }
 
 function main() {
     const sliderT = document.getElementById("T");
@@ -93,6 +94,7 @@ function main() {
         valorT.textContent = `${T} K (${Tc} °C)`;
     });
     updatePlot();
+    // animarTemperatura();
 }
 
 window.addEventListener('DOMContentLoaded', main);
