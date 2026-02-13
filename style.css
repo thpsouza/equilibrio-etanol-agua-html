@@ -1,5 +1,5 @@
 body {
-    background-color: #f0f0f0;
+    background-color: #fcf7f0c4;
     font-family: Arial, sans-serif;
     text-align: center;
 }
@@ -32,6 +32,8 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 16px;
     height: 16px;
-    background: #8e0000;
+    background: #ff4d4d;
     border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #8e0000;
 }
