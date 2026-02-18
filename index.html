@@ -8,16 +8,23 @@
 </head>
 <body>
 
-<h2>Equilíbrio Etanol-Água</h2>
-<div class="grafico-container">
-    <canvas id="grafico" width="600" height="600"></canvas>
+<h2>Diagramas de Equilíbrio Etanol-Água</h2>
+<div class="diagramas-wrapper">
+    <div class="diagrama-container">
+        <canvas id="diagrama-pxy" width="600" height="600"></canvas>
+    </div>
+    <div class="diagrama-container">
+        <canvas id="diagrama-xy" width="600" height="600"></canvas>
+    </div>
 </div>
-
 <div class="sliderT-container">
     <input type="range" id="T" min="273" max="373" step="1" value="298">
     <label for="T">Temperatura: <span id="valorT">298 K (25 °C)</span></label>
-    
 </div>
+<p class="comentario">
+    <strong>OBS:</strong> 
+    Embora não tão usual, os diagramas são isotérmicos para evitar resoluções numéricas iterativas, como seria no caso de pressão constante).
+</p>
 
 <script src="equilibrio.js"></script>
 <script src="main.js"></script>
