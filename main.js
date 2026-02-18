@@ -45,12 +45,12 @@ function plotarDiagramaXY(X,Y) {
             scales: {
                 x: {
                     type: "linear",
-                    title: { display: true, text: 'x' },
+                    title: { display: true, text: 'x (Etanol)' },
                     min: 0,
                     max: 1,
                 },
                 y: {
-                    title: { display: true, text: 'y' },
+                    title: { display: true, text: 'y (Etanol)' },
                     min: 0,
                     max: 1,
                 }
@@ -105,12 +105,12 @@ function plotarDiagramaPXY(P,X,Y) {
             scales: {
                 x: {
                     type: "linear",
-                    title: { display: true, text: 'x/y' },
+                    title: { display: true, text: 'x/y (Etanol)' },
                     min: 0,
                     max: 1,
                 },
                 y: {
-                    title: { display: true, text: 'P (bar)' }
+                    title: { display: true, text: 'P (MPa)' }
                 }
             }
         }
